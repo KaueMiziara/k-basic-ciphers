@@ -2,7 +2,7 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Window 2.12
 
-import com.kdab.cxx_qt.demo 1.0
+import kaue.cipher.caesar 1.0
 
 Window {
     height: 480

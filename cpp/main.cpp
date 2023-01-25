@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 		},
 		Qt::QueuedConnection);
 
-	qmlRegisterType<CaesarObject>("com.kdab.cxx_qt.demo", 1, 0, "CaesarObject");
+	qmlRegisterType<CaesarObject>("kaue.cipher.caesar", 1, 0, "CaesarObject");
 
 	engine.load(url);
 
