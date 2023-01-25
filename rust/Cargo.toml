@@ -1,8 +1,17 @@
 [package]
-name = "rust"
+name = "caesar-shift-cxxqt"
 version = "0.1.0"
 edition = "2021"
+authors = ["Kauê Miziara"]
+publish = false
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+crate-type = ["staticlib"]
 
 [dependencies]
+cxx = "1.0"
+cxx-qt = "0.4"
+cxx-qt-lib = "0.4"
+
+[build-dependencies]
+cxx-qt-build = "0.4"
