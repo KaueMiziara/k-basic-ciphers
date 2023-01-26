@@ -29,14 +29,29 @@ mod caesar_object {
         #[qinvokable]
         pub fn cipher(self: Pin<&mut Self>) -> QString {
             let mut text: String = self.as_ref().text_input().into();
-            // let text: String = text.into();
 
-            // let shift = shift.into().trim().parse::<u128>().unwrap_or_default();
             let shift = (self.shift() % 26) as u8;
         
             text = text.to_uppercase().chars().map(|char| {
                 if char != ' ' {
                     (65 + (char as u8 + shift - 65) % 26) as char
+                } else {
+                    char
+                }
+            }).collect::<String>();
+
+            QString::from(&text)
+        }
+
+        #[qinvokable]
+        pub fn decipher(self: Pin<&mut Self>) -> QString {
+            let mut text: String = self.as_ref().text_input().into();
+
+            let shift = (self.shift() % 26) as u8;
+        
+            text = text.to_uppercase().chars().map(|char| {
+                if char != ' ' {
+                    (65 + (char as u8 - shift + 65) % 26) as char
                 } else {
                     char
                 }

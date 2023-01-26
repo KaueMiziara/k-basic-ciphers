@@ -31,9 +31,15 @@ Window {
         }
 
         Button {
-            text: "Shift"
+            text: "Cipher"
 
             onClicked: caesar.textOutput = caesar.cipher()
+        }
+        
+        Button {
+            text: "Decipher"
+            
+            onClicked: caesar.textOutput = caesar.decipher()
         }
     }
 }
