@@ -1,12 +1,14 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtQuick.Controls.Material 2.15
 
 import kaue.cipher.caesar 1.0
 
 ApplicationWindow {
+    id: root
     title: qsTr("Caesar Shift")
-    width: 320
-    height: 260
+    minimumWidth: 320
+    minimumHeight: 260
     visible: true
     color: "light yellow"
 
