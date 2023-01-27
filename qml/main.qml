@@ -6,8 +6,8 @@ import kaue.cipher.caesar 1.0
 
 Window {
     title: qsTr("Hello World")
-    width: 640
-    height: 480
+    width: 320
+    height: 240
     visible: true
     color: "light yellow"
 
@@ -15,7 +15,7 @@ Window {
         id: caesar
         textInput: input.displayText
         textOutput: ""
-        shift: shift.displayText
+        shift: Math.abs(shift.displayText)
     }
 
     Column {

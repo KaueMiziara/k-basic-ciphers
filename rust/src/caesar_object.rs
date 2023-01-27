@@ -33,7 +33,7 @@ mod caesar_object {
             let shift = (self.shift() % 26) as u8;
         
             text = text.to_uppercase().chars().map(|char| {
-                if char != ' ' {
+                if (char.is_ascii()) && (char != ' ') && !(char.is_numeric()) {
                     (65 + (char as u8 + shift - 65) % 26) as char
                 } else {
                     char
@@ -50,7 +50,7 @@ mod caesar_object {
             let shift = (self.shift() % 26) as u8;
         
             text = text.to_uppercase().chars().map(|char| {
-                if char != ' ' {
+                if (char.is_ascii()) && (char != ' ') && !(char.is_numeric()) {
                     (65 + (char as u8 - shift + 65) % 26) as char
                 } else {
                     char
