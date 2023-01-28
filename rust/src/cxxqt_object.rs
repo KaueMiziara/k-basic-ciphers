@@ -34,7 +34,7 @@ mod cxxqt_object {
             let shift = (self.shift() % 26) as u8;
         
             text = text.to_uppercase().chars().map(|char| {
-                if (char.is_ascii()) && (char != ' ') && !(char.is_numeric()) {
+                if char.is_ascii_alphabetic() {
                     (65 + (char as u8 + shift - 65) % 26) as char
                 } else {
                     char
@@ -51,7 +51,7 @@ mod cxxqt_object {
             let shift = (self.shift() % 26) as u8;
         
             text = text.to_uppercase().chars().map(|char| {
-                if (char.is_ascii()) && (char != ' ') && !(char.is_numeric()) {
+                if char.is_ascii_alphabetic() {
                     (65 + (char as u8 - shift + 65) % 26) as char
                 } else {
                     char
@@ -96,7 +96,7 @@ mod cxxqt_object {
             let mut text = text.to_uppercase();
 
             text = text.char_indices().map(|(index, char)| {
-                if (char.is_ascii()) && (char != ' ') && !(char.is_numeric()) {
+                if char.is_ascii_alphabetic() {
                     (65 + (char as u8 + key[index % key.len()] - 65) % 26) as char
                 } else {
                     char
@@ -116,11 +116,17 @@ mod cxxqt_object {
             let key = key.to_uppercase();
             let key = key.as_bytes();
             
-            let key: Vec<u8> = key.iter().map(|key| {
-                (key + 1) - 65
+            let keys: Vec<u8> = key.iter().map(|key| {
+                if (*key as char).is_alphabetic() {
+                    (key + 1) - 65
+                } else if (*key as char).is_numeric() {
+                    (*key) + 4
+                } else {
+                    0
+                }
             }).collect();
-    
-            key
+
+            keys
         }
     }
 }
