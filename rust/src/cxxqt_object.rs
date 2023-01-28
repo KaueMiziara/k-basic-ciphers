@@ -108,7 +108,23 @@ mod cxxqt_object {
 
         #[qinvokable]
         pub fn decipher_v(self: Pin<&mut Self>) -> QString {
-            QString::from("")
+            let key: Vec<u8> = if self.get_key().is_empty() {
+                vec![0]
+            } else {
+                self.get_key()
+            };
+            let text: String = self.text_input().into();
+            let mut text = text.to_uppercase();
+
+            text = text.char_indices().map(|(index, char)| {
+                if char.is_ascii_alphabetic() {
+                    (65 + (char as u8 - key[index % key.len()] + 65) % 26) as char
+                } else {
+                    char
+                }
+            }).collect();
+
+            QString::from(&text[..])
         }
 
         fn get_key(&self) -> Vec<u8> {
