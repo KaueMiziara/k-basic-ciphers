@@ -71,7 +71,7 @@ mod cxxqt_object {
         #[qproperty]
         text_output: QString,
         #[qproperty]
-        shift: QString,
+        key: QString,
     }
 
     impl Default for VigenereObject {
@@ -79,20 +79,48 @@ mod cxxqt_object {
             Self {
                 text_input: QString::from(""),
                 text_output: QString::from(""),
-                shift: QString::from(""),
+                key: QString::from(""),
             }
         }
     }
 
-    impl qobject::CaesarObject {
+    impl qobject::VigenereObject {
         #[qinvokable]
         pub fn cipher_v(self: Pin<&mut Self>) -> QString {
-            QString::from("")
+            let key: Vec<u8> = if self.get_key().is_empty() {
+                vec![0]
+            } else {
+                self.get_key()
+            };
+            let text: String = self.text_input().into();
+            let mut text = text.to_uppercase();
+
+            text = text.char_indices().map(|(index, char)| {
+                if (char.is_ascii()) && (char != ' ') && !(char.is_numeric()) {
+                    (65 + (char as u8 + key[index % key.len()] - 65) % 26) as char
+                } else {
+                    char
+                }
+            }).collect();
+
+            QString::from(&text[..])
         }
 
         #[qinvokable]
         pub fn decipher_v(self: Pin<&mut Self>) -> QString {
             QString::from("")
+        }
+
+        fn get_key(&self) -> Vec<u8> {
+            let key: String = self.key().into();
+            let key = key.to_uppercase();
+            let key = key.as_bytes();
+            
+            let key: Vec<u8> = key.iter().map(|key| {
+                (key + 1) - 65
+            }).collect();
+    
+            key
         }
     }
 }

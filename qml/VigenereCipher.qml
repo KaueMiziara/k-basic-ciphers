@@ -13,7 +13,7 @@ Rectangle {
         id: vigenere
         textInput: input.displayText
         textOutput: ""
-        shift: ""
+        key: key.displayText
     }
 
     Column {
@@ -49,7 +49,7 @@ Rectangle {
             }
 
             TextField {
-                id: shift
+                id: key
                 placeholderText: qsTr("Cipher key")
             }
         }
