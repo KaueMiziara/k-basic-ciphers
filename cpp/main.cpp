@@ -1,7 +1,7 @@
 #include <QtGui/QGuiApplication>
 #include <QtQml/QQmlApplicationEngine>
 
-#include "cxx-qt-gen/caesar_object.cxxqt.h"
+#include "cxx-qt-gen/cxxqt_object.cxxqt.h"
 
 int main(int argc, char *argv[]) {
 	QGuiApplication app(argc, argv);
@@ -20,6 +20,7 @@ int main(int argc, char *argv[]) {
 		Qt::QueuedConnection);
 
 	qmlRegisterType<CaesarObject>("kaue.cipher.caesar", 1, 0, "CaesarObject");
+	qmlRegisterType<VigenereObject>("kaue.cipher.vigenere", 1, 0, "VigenereObject");
 
 	engine.load(url);
 

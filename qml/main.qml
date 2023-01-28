@@ -34,6 +34,13 @@ ApplicationWindow {
         }
 
         MenuItem {
+            text: "Vigenère Cipher"
+            onClicked: {
+                loadScene.source = "VigenereCipher.qml"
+            }
+        }
+
+        MenuItem {
             text: "Quit"
             onClicked: Qt.quit()
         }

@@ -1,10 +1,11 @@
 #[cxx_qt::bridge]
-mod caesar_object {
+mod cxxqt_object {
     unsafe extern "C++" {
         include!("cxx-qt-lib/qstring.h");
         type QString = cxx_qt_lib::QString;
     }
 
+    // Caesar
     #[cxx_qt::qobject]
     pub struct CaesarObject {
         #[qproperty]
@@ -27,7 +28,7 @@ mod caesar_object {
 
     impl qobject::CaesarObject {
         #[qinvokable]
-        pub fn cipher(self: Pin<&mut Self>) -> QString {
+        pub fn cipher_c(self: Pin<&mut Self>) -> QString {
             let mut text: String = self.as_ref().text_input().into();
 
             let shift = (self.shift() % 26) as u8;
@@ -44,7 +45,7 @@ mod caesar_object {
         }
 
         #[qinvokable]
-        pub fn decipher(self: Pin<&mut Self>) -> QString {
+        pub fn decipher_c(self: Pin<&mut Self>) -> QString {
             let mut text: String = self.as_ref().text_input().into();
 
             let shift = (self.shift() % 26) as u8;
@@ -58,6 +59,40 @@ mod caesar_object {
             }).collect::<String>();
 
             QString::from(&text)
+        }
+    }
+
+
+    // Vigenere
+    #[cxx_qt::qobject]
+    pub struct VigenereObject {
+        #[qproperty]
+        text_input: QString,
+        #[qproperty]
+        text_output: QString,
+        #[qproperty]
+        shift: QString,
+    }
+
+    impl Default for VigenereObject {
+        fn default() -> Self {
+            Self {
+                text_input: QString::from(""),
+                text_output: QString::from(""),
+                shift: QString::from(""),
+            }
+        }
+    }
+
+    impl qobject::CaesarObject {
+        #[qinvokable]
+        pub fn cipher_v(self: Pin<&mut Self>) -> QString {
+            QString::from("")
+        }
+
+        #[qinvokable]
+        pub fn decipher_v(self: Pin<&mut Self>) -> QString {
+            QString::from("")
         }
     }
 }

@@ -2,18 +2,18 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 
-import kaue.cipher.caesar 1.0
+import kaue.cipher.vigenere 1.0
 
 Rectangle {
-    id: caesarScreen
+    id: vigenereScreen
     anchors.centerIn: parent
     color: "light yellow"
 
-    CaesarObject {
-        id: caesar
+    VigenereObject {
+        id: vigenere
         textInput: input.displayText
         textOutput: ""
-        shift: Math.abs(shift.displayText)
+        shift: ""
     }
 
     Column {
@@ -33,7 +33,7 @@ Rectangle {
         Text {
             x: parent.width/2 - this.contentWidth/2
 
-            text: "<b>Caesar Shift</b>"
+            text: "<b>Vigenère Cipher</b>"
             font.pixelSize: 20
         }
 
@@ -50,7 +50,7 @@ Rectangle {
 
             TextField {
                 id: shift
-                placeholderText: qsTr("Shift")
+                placeholderText: qsTr("Cipher key")
             }
         }
 
@@ -61,19 +61,19 @@ Rectangle {
             Button {
                 text: "Cipher"
 
-                onClicked: caesar.textOutput = caesar.cipherC()
+                onClicked: vigenere.textOutput = vigenere.cipherV()
             }
             
             Button {
                 text: "Decipher"
                 
-                onClicked: caesar.textOutput = caesar.decipherC()
+                onClicked: vigenere.textOutput = vigenere.decipherV()
             }
         }
 
         Label {
             anchors.horizontalCenter: parent.horizontalCenter
-            text: "Output: " + caesar.textOutput
+            text: "Output: " + vigenere.textOutput
         }
     }
 }

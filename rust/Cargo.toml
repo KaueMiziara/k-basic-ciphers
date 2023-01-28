@@ -1,5 +1,5 @@
 [package]
-name = "caesar-shift-cxxqt"
+name = "kciphers-cxxqt"
 version = "0.1.0"
 edition = "2021"
 authors = ["Kauê Miziara"]
