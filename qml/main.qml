@@ -6,7 +6,7 @@ import kaue.cipher.caesar 1.0
 
 ApplicationWindow {
     id: root
-    title: qsTr("Caesar Shift")
+    title: qsTr("Ciphers")
     minimumWidth: 320
     minimumHeight: 260
     visible: true
@@ -29,14 +29,16 @@ ApplicationWindow {
         MenuItem {
             text: "Caesar Shift"
             onClicked: {
-                loadScene.source = "CaesarShift.qml"
+                loadScene.source = "CaesarShift.qml";
+                root.title = qsTr("Caesar Shift");
             }
         }
 
         MenuItem {
             text: "Vigenère Cipher"
             onClicked: {
-                loadScene.source = "VigenereCipher.qml"
+                loadScene.source = "VigenereCipher.qml";
+                root.title = qsTr("Vigenère Cipher");
             }
         }
 
