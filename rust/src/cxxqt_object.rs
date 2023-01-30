@@ -1,5 +1,7 @@
 #[cxx_qt::bridge]
 mod cxxqt_object {
+    use crate::ASCII_A;
+
     unsafe extern "C++" {
         include!("cxx-qt-lib/qstring.h");
         type QString = cxx_qt_lib::QString;
@@ -34,10 +36,9 @@ mod cxxqt_object {
             let shift = (self.shift() % 26) as u8;
         
             text = text.to_uppercase().chars().map(|char| {
-                if char.is_ascii_alphabetic() {
-                    (65 + (char as u8 + shift - 65) % 26) as char
-                } else {
-                    char
+                match char.is_ascii_alphabetic() {
+                    true => (ASCII_A + (char as u8 + shift - ASCII_A) % 26) as char,
+                    false => char,
                 }
             }).collect::<String>();
 
@@ -51,10 +52,9 @@ mod cxxqt_object {
             let shift = (self.shift() % 26) as u8;
         
             text = text.to_uppercase().chars().map(|char| {
-                if char.is_ascii_alphabetic() {
-                    (65 + (char as u8 - shift + 65) % 26) as char
-                } else {
-                    char
+                match char.is_ascii_alphabetic() {
+                    true => (ASCII_A + (char as u8 - shift + ASCII_A) % 26) as char,
+                    false => char,
                 }
             }).collect::<String>();
 
@@ -87,17 +87,13 @@ mod cxxqt_object {
     impl qobject::VigenereObject {
         #[qinvokable]
         pub fn cipher_v(self: Pin<&mut Self>) -> QString {
-            let key: Vec<u8> = if self.get_key().is_empty() {
-                vec![0]
-            } else {
-                self.get_key()
-            };
+            let key = self.get_key();
             let text: String = self.text_input().into();
             let mut text = text.to_uppercase();
 
             text = text.char_indices().map(|(index, char)| {
                 if char.is_ascii_alphabetic() {
-                    (65 + (char as u8 + key[index % key.len()] - 65) % 26) as char
+                    (ASCII_A + (char as u8 + key[index % key.len()] - ASCII_A) % 26) as char
                 } else {
                     char
                 }
@@ -108,17 +104,13 @@ mod cxxqt_object {
 
         #[qinvokable]
         pub fn decipher_v(self: Pin<&mut Self>) -> QString {
-            let key: Vec<u8> = if self.get_key().is_empty() {
-                vec![0]
-            } else {
-                self.get_key()
-            };
+            let key = self.get_key();
             let text: String = self.text_input().into();
             let mut text = text.to_uppercase();
 
             text = text.char_indices().map(|(index, char)| {
                 if char.is_ascii_alphabetic() {
-                    (65 + (char as u8 - key[index % key.len()] + 65) % 26) as char
+                    (ASCII_A + (char as u8 - key[index % key.len()] + ASCII_A) % 26) as char
                 } else {
                     char
                 }
@@ -134,7 +126,7 @@ mod cxxqt_object {
             
             let keys: Vec<u8> = key.iter().map(|key| {
                 if (*key as char).is_alphabetic() {
-                    (key + 1) - 65
+                    (key + 1) - ASCII_A
                 } else if (*key as char).is_numeric() {
                     (*key) + 4
                 } else {
@@ -142,7 +134,10 @@ mod cxxqt_object {
                 }
             }).collect();
 
-            keys
+            match keys.is_empty() {
+                true => vec![0],
+                false => keys,
+            }
         }
     }
 }

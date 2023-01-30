@@ -2,8 +2,6 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 
-import kaue.cipher.caesar 1.0
-
 ApplicationWindow {
     id: root
     title: qsTr("Ciphers")
