@@ -50,7 +50,7 @@ Rectangle {
 
             TextField {
                 id: key
-                placeholderText: qsTr("Cipher key")
+                placeholderText: qsTr("Password")
             }
         }
 

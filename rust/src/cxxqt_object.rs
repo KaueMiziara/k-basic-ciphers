@@ -126,7 +126,7 @@ mod cxxqt_object {
             
             let keys: Vec<u8> = key.iter().map(|key| {
                 if (*key as char).is_alphabetic() {
-                    (key + 1) - ASCII_A
+                    (key) - ASCII_A
                 } else if (*key as char).is_numeric() {
                     (*key) + 4
                 } else {
