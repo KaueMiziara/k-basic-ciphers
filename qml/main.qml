@@ -8,7 +8,6 @@ ApplicationWindow {
     minimumWidth: 320
     minimumHeight: 260
     visible: true
-    color: "light yellow"
 
     Button {
         id: openMenu

@@ -7,7 +7,6 @@ import kaue.cipher.vigenere 1.0
 Rectangle {
     id: vigenereScreen
     anchors.centerIn: parent
-    color: "light yellow"
 
     VigenereObject {
         id: vigenere

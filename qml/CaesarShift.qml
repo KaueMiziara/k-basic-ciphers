@@ -7,7 +7,6 @@ import kaue.cipher.caesar 1.0
 Rectangle {
     id: caesarScreen
     anchors.centerIn: parent
-    color: "light yellow"
 
     CaesarObject {
         id: caesar

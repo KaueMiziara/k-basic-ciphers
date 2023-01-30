@@ -11,16 +11,16 @@ The method was named after Gaius Julius Caesar, a roman general and emperor that
 ### Vigenère Cipher
 An improved Caesar Shift. <br>
 Instead of shifting all the characters in a text by the same key, this cipher often uses a password or a passphrase: <br>
-Each letter in the password is converted to a keythe number relative to its position in the alphabet ("A" == 1, "B" == 2, ...). Then, each character in the text is shifted by the key in the same position, looping the password if it's shorter than the text. <br>
+Each letter in the password is converted to a keythe number relative to its position in the alphabet ("A" = 1, "B" = 2, etc.). Then, each character in the text is shifted by the key in the same position, looping the password if it's shorter than the text. <br>
 For example, using "ACE" (135) as password, "ABC" will turn into "BEH". <br>
 Although being invented by the italian crypthologist Giovan Battista Bellaso, 
 this cipher was erroneously named after the french cryptographer Blaise de Vigenère, who
 created a similar cipher, called "autokey cipher". <br>
-This cipher earned the description <it>"le chiffrage indéchiffrable"</it> 
-("<it>indecipherable cipher</it>") because for over 300 years nobody managed to break it. <br>
+This cipher earned the description <em>"le chiffrage indéchiffrable"</em> 
+("<em>indecipherable cipher</em>") because for over 300 years nobody managed to break it. <br>
 
 
-> TODO: Licenses and credits (GPL && MIT -> QT, CXX, CXX-QT) <br>
+
 > TODO: A better looking GUI <br>
 > TODO: How to build with cmake <br>
 > TODO: A decent README <br>
