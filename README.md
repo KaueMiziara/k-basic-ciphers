@@ -21,5 +21,6 @@ This cipher earned the description <it>"le chiffrage indéchiffrable"</it>
 
 
 > TODO: Licenses and credits (GPL && MIT -> QT, CXX, CXX-QT) <br>
+> TODO: A better looking GUI <br>
 > TODO: How to build with cmake <br>
 > TODO: A decent README <br>
