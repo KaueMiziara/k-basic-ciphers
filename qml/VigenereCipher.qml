@@ -31,7 +31,9 @@ Rectangle {
 
         Text {
             x: parent.width/2 - this.contentWidth/2
-
+            width: root.width / 3
+            height: root.height / 4
+            
             text: "<b>Vigenère Cipher</b>"
             font.pixelSize: 20
         }
@@ -44,11 +46,13 @@ Rectangle {
 
             TextField {
                 id: input
+                width: root.width / 2
                 placeholderText: qsTr("Text to encode")
             }
 
             TextField {
                 id: key
+                width: root.width / 10
                 placeholderText: qsTr("Password")
             }
         }
@@ -59,13 +63,15 @@ Rectangle {
 
             Button {
                 text: "Cipher"
+                width: input.width / 2
 
                 onClicked: vigenere.textOutput = vigenere.cipherV()
             }
             
             Button {
                 text: "Decipher"
-                
+                width: input.width / 2
+
                 onClicked: vigenere.textOutput = vigenere.decipherV()
             }
         }

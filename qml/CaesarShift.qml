@@ -31,9 +31,11 @@ Rectangle {
 
         Text {
             x: parent.width/2 - this.contentWidth/2
+            width: root.width / 3
+            height: root.height / 4
 
             text: "<b>Caesar Shift</b>"
-            font.pixelSize: 20
+            font.pixelSize: this.height / 3
         }
 
         Row {
@@ -44,11 +46,13 @@ Rectangle {
 
             TextField {
                 id: input
+                width: root.width / 2
                 placeholderText: qsTr("Text to encode")
             }
 
             TextField {
                 id: shift
+                width: root.width / 10
                 placeholderText: qsTr("Shift")
             }
         }
@@ -59,13 +63,15 @@ Rectangle {
 
             Button {
                 text: "Cipher"
+                width: input.width / 2
 
                 onClicked: caesar.textOutput = caesar.cipherC()
             }
             
             Button {
                 text: "Decipher"
-                
+                width: input.width / 2
+
                 onClicked: caesar.textOutput = caesar.decipherC()
             }
         }
