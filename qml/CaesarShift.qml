@@ -20,15 +20,6 @@ Rectangle {
         anchors.margins: 15
         spacing: 15
 
-        Button {
-            id: openMenu
-            text: "Cipher select"
-
-            onClicked: {
-                menu.open()
-            }
-        }
-
         Text {
             x: parent.width/2 - this.contentWidth/2
             width: root.width / 3

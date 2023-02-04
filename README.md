@@ -17,7 +17,7 @@ Although being invented by the italian crypthologist Giovan Battista Bellaso,
 this cipher was erroneously named after the french cryptographer Blaise de Vigenère, who
 created a similar cipher, called "autokey cipher". <br>
 This cipher earned the description <em>"le chiffrage indéchiffrable"</em> 
-("<em>indecipherable cipher</em>") because for over 300 years nobody managed to break it. <br>
+("<em>indecipherable cipher</em>") for taking over 300 years until someone managed to break it. <br>
 
 
 
