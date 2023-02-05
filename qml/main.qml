@@ -40,20 +40,51 @@ ApplicationWindow {
     }
 
 
-    // TODO: side menu
-    // Drawer {
-    //     id: sideBar
-    //     width: Math.max(150 , root.width / 4)
-    //     height: root.height
+    // TODO improve side menu
+    Drawer {
+        id: sideBar
+        y: toolBar.height
+        width: Math.max(150 , root.width / 4)
+        height: root.height - toolBar.height
 
-    //     Label {
-    //         text: "Caesar Shift"
-    //     }
+        ColumnLayout {
+            width: parent.width
 
-    //     Label {
-    //         text: "Vigenère Cipher"
-    //     }
-    // }
+            Pane {
+                id: caesarPane
+                width: parent.width
+    
+                Label {
+                    text: "Caesar Shift"
+                
+                    MouseArea {
+                        anchors.fill: parent
+                        
+                        onClicked: {
+                            loadScene.source = "CaesarShift.qml";
+                        }
+                    }
+                }
+            }
+
+            Pane {
+                id: vigenerePane
+                width: parent.width
+
+                Label {
+                    text: "Vigenère Cipher"
+                
+                    MouseArea {
+                        anchors.fill: parent
+                        
+                        onClicked: {
+                            loadScene.source = "VigenereCipher.qml";
+                        }
+                    }
+                }
+            }
+        }
+    }
 
 
     Menu {
