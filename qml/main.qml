@@ -14,28 +14,26 @@ ApplicationWindow {
     ToolBar {
         id: toolBar
         width: root.width
-        height: 2 * toolBarLabel.contentHeight
         z: 1
         
-        // TODO fix items alignment
         RowLayout {
             anchors.fill: parent
 
             ToolButton {
-                text: qsTr("Menu")
+                text: qsTr("<b>Menu</b>")
                 onClicked: menu.open()
             }
 
             Label {
                 id: toolBarLabel
-                anchors.centerIn: parent
+                Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
 
-                text: "Ciphers"
+                text: "<b>Ciphers</b>"
             }
 
             ToolButton {
-                anchors.right: parent.right
-                text: qsTr("X")
+                Layout.alignment: Qt.AlignRight
+                text: qsTr("<b>X</b>")
                 onClicked: Qt.quit()
             }
         }
@@ -66,7 +64,7 @@ ApplicationWindow {
             text: "Caesar Shift"
             onClicked: {
                 loadScene.source = "CaesarShift.qml";
-                root.title = qsTr("Caesar Shift");
+                toolBarLabel.text = qsTr("<b>Caesar Shift</b>");
             }
         }
 
@@ -74,7 +72,7 @@ ApplicationWindow {
             text: "Vigenère Cipher"
             onClicked: {
                 loadScene.source = "VigenereCipher.qml";
-                root.title = qsTr("Vigenère Cipher");
+                toolBarLabel.text = qsTr("<b>Vigenère Cipher</b>");
             }
         }
 
