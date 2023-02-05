@@ -21,7 +21,13 @@ ApplicationWindow {
 
             ToolButton {
                 text: qsTr("<b>Menu</b>")
-                onClicked: menu.open()
+                onClicked: {
+                    if (sideBar.opened) {
+                        sideBar.close();
+                    } else {
+                        sideBar.open();
+                    }
+                }
             }
 
             Label {
@@ -62,6 +68,7 @@ ApplicationWindow {
                         
                         onClicked: {
                             loadScene.source = "CaesarShift.qml";
+                            sideBar.close();
                         }
                     }
                 }
@@ -79,37 +86,11 @@ ApplicationWindow {
                         
                         onClicked: {
                             loadScene.source = "VigenereCipher.qml";
+                            sideBar.close();
                         }
                     }
                 }
             }
-        }
-    }
-
-
-    Menu {
-        id: menu
-        y: toolBar.height + 5
-
-        MenuItem {
-            text: "Caesar Shift"
-            onClicked: {
-                loadScene.source = "CaesarShift.qml";
-                toolBarLabel.text = qsTr("<b>Caesar Shift</b>");
-            }
-        }
-
-        MenuItem {
-            text: "Vigenère Cipher"
-            onClicked: {
-                loadScene.source = "VigenereCipher.qml";
-                toolBarLabel.text = qsTr("<b>Vigenère Cipher</b>");
-            }
-        }
-
-        MenuItem {
-            text: "Quit"
-            onClicked: Qt.quit()
         }
     }
 
