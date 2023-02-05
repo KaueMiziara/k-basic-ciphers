@@ -18,10 +18,8 @@ ApplicationWindow {
         
         MouseArea {
             anchors.fill: parent
-            property variant clickPos: "1,1"
 
             DragHandler {
-                acceptedDevices: PointerDevice.GenericPointer
                 grabPermissions: PointerHandler.CanTakeOverFromItems |
                                  PointerHandler.CanTakeOverFromHandlersOfDifferentType|
                                  PointerHandler.ApprovesTakeOverByAnything
@@ -51,10 +49,31 @@ ApplicationWindow {
                 text: "<b>Ciphers</b>"
             }
 
-            ToolButton {
+            RowLayout {
                 Layout.alignment: Qt.AlignRight
-                text: qsTr("<b>X</b>")
-                onClicked: Qt.quit()
+
+                // TODO add images to buttons
+                ToolButton {
+                    id: minimizeWindow
+                    text: qsTr("<b>-</b>")
+                    onClicked: root.visibility = Window.Minimized
+                }
+
+                ToolButton {
+                    id: maximizeWindow
+                    text: qsTr("<b>O</b>")
+                    onClicked: {
+                        if (root.visibility === Window.Maximized)
+                            root.visibility = Window.Windowed
+                        else root.visibility = Window.Maximized
+                    }
+                }
+
+                ToolButton {
+                    id: closeWindow
+                    text: qsTr("<b>X</b>")
+                    onClicked: Qt.quit()
+                }
             }
         }
     }
