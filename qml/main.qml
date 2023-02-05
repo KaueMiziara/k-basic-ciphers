@@ -20,22 +20,12 @@ ApplicationWindow {
             anchors.fill: parent
             property variant clickPos: "1,1"
 
-            onPressed: {
-                clickPos = Qt.point(mouse.x, mouse.y);
-            }
-
-            onPositionChanged: {
-                var delta = Qt.point(mouse.x - clickPos.x, mouse.y - clickPos.y);
-                root.x += delta.x; root.y += delta.y;
-
-                if (root.y <= 0) root.visibility = Window.Maximized;
-                else {
-                    if (root.visibility === Window.Maximized && root.y > 0) {
-                        root.visibility = Window.Windowed;
-                        root.width = root.minimumWidth;
-                        root.height = root.minimumHeight;
-                    }
-                }
+            DragHandler {
+                acceptedDevices: PointerDevice.GenericPointer
+                grabPermissions: PointerHandler.CanTakeOverFromItems |
+                                 PointerHandler.CanTakeOverFromHandlersOfDifferentType|
+                                 PointerHandler.ApprovesTakeOverByAnything
+                onActiveChanged: if (active) root.startSystemMove()
             }
         }
         
