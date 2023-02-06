@@ -9,7 +9,13 @@ ApplicationWindow {
     minimumWidth: 320
     minimumHeight: 300
     visible: true
+    color: "transparent"
     flags: Qt.FramelessWindowHint
+
+    Rectangle {
+        radius: 5
+        anchors.fill: parent
+    }
 
     ToolBar {
         id: toolBar
