@@ -76,8 +76,14 @@ ApplicationWindow {
 
             ToolButton {
                 Layout.alignment: Qt.AlignLeft
+                
+                Image {
+                    x: 10; y: 5
+                    width: 40
+                    fillMode: Image.PreserveAspectFit
+                    source: "img/menu.png"
+                }
 
-                text: qsTr("<b>Menu</b>")
                 onClicked: {
                     if (sideBar.opened) {
                         sideBar.close();
@@ -97,10 +103,10 @@ ApplicationWindow {
             RowLayout {
                 Layout.alignment: Qt.AlignRight
 
-                // TODO add images to buttons
                 ToolButton {
                     id: closeWindow
-                    text: qsTr("<b>X</b>")
+                    text: qsTr("<b>×</b>")
+                    font.pixelSize: 30
                     onClicked: Qt.quit()
                 }
             }

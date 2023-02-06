@@ -3,5 +3,6 @@
         <file>main.qml</file>
         <file>CaesarShift.qml</file>
         <file>VigenereCipher.qml</file>
+        <file>img/menu.png</file>
     </qresource>
 </RCC>
