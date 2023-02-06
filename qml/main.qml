@@ -62,6 +62,12 @@ ApplicationWindow {
             DragHandler {
                 onActiveChanged: if (active) root.startSystemMove()
             }
+
+            onDoubleClicked: {
+                if (root.visibility === Window.Maximized)
+                    root.visibility = Window.Windowed
+                else root.visibility = Window.Maximized
+            }
         }
         
 
