@@ -85,49 +85,60 @@ ApplicationWindow {
     }
 
 
-    // TODO improve side menu
     Drawer {
         id: sideBar
         y: toolBar.height
         width: Math.max(150, root.width / 5)
         height: root.height - toolBar.height
 
-        ColumnLayout {
-            width: parent.width
+        ListModel {
+            id: model
 
-            Pane {
-                id: caesarPane
-                width: parent.width
-    
-                Label {
-                    text: "Caesar Shift"
-                
+            ListElement {
+                cipher: "Caesar Shift"
+                file: "CaesarShift.qml"
+            }
+            ListElement {
+                cipher: "Vigenère Cipher"
+                file: "VigenereCipher.qml"
+            }
+        }
+
+        ListView {
+            id: cipherList
+            anchors.fill: parent
+            model: model
+            focus: true
+            delegate: Component {
+                Item {
+                    width: parent.width
+                    height: 50
+                    
+                    Text {
+                        x: 15
+                        y: this.height / 2
+                        text: cipher
+                        font.pixelSize: this.height
+                    }
+
                     MouseArea {
                         anchors.fill: parent
-                        
                         onClicked: {
-                            loadScene.source = "CaesarShift.qml";
-                            sideBar.close();
+                            cipherList.currentIndex = index
+                            loadScene.source = file;
                         }
                     }
                 }
             }
 
-            Pane {
-                id: vigenerePane
-                width: parent.width
-
-                Label {
-                    text: "Vigenère Cipher"
+            highlight: Rectangle {
+                color: "lightgray"
+                radius: 5
                 
-                    MouseArea {
-                        anchors.fill: parent
-                        
-                        onClicked: {
-                            loadScene.source = "VigenereCipher.qml";
-                            sideBar.close();
-                        }
-                    }
+                Text {
+                    anchors.right: parent.right
+                    text: "Select"
+                    color: "red"
                 }
             }
         }
