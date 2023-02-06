@@ -17,6 +17,40 @@ ApplicationWindow {
         anchors.fill: parent
     }
 
+
+    MouseArea {
+        id: resizeWindow
+        anchors.fill: parent
+        hoverEnabled: true
+        acceptedButtons: Qt.LeftButton
+
+        property int edges: 0;
+        property int edgeOffest: 5;
+
+        function setEdges(x, y) {
+            edges = 0;
+            if (x < edgeOffest) edges |= Qt.LeftEdge;
+            if (x > (width - edgeOffest))  edges |= Qt.RightEdge;
+            if (y < edgeOffest) edges |= Qt.TopEdge;
+            if (y > (height - edgeOffest)) edges |= Qt.BottomEdge;
+        }
+
+        cursorShape: {
+            return !(containsMouse) ? Qt.ArrowCursor:
+                    (edges == 3 || edges == 12) ? Qt.SizeFDiagCursor :
+                    (edges == 5 || edges == 10) ? Qt.SizeBDiagCursor :
+                    (edges & 9) ? Qt.SizeVerCursor :
+                    (edges & 6) ? Qt.SizeHorCursor : Qt.ArrowCursor;
+        }
+
+        onPositionChanged: setEdges(mouseX, mouseY);
+        onPressed: {
+            setEdges(mouseX, mouseY);
+            if (edges && containsMouse) startSystemResize(edges);
+        }
+    }
+
+
     ToolBar {
         id: toolBar
         width: root.width
@@ -26,9 +60,6 @@ ApplicationWindow {
             anchors.fill: parent
 
             DragHandler {
-                grabPermissions: PointerHandler.CanTakeOverFromItems |
-                                 PointerHandler.CanTakeOverFromHandlersOfDifferentType|
-                                 PointerHandler.ApprovesTakeOverByAnything
                 onActiveChanged: if (active) root.startSystemMove()
             }
         }
@@ -38,6 +69,8 @@ ApplicationWindow {
             anchors.fill: parent
 
             ToolButton {
+                Layout.alignment: Qt.AlignLeft
+
                 text: qsTr("<b>Menu</b>")
                 onClicked: {
                     if (sideBar.opened) {
@@ -98,6 +131,7 @@ ApplicationWindow {
                 cipher: "Caesar Shift"
                 file: "CaesarShift.qml"
             }
+
             ListElement {
                 cipher: "Vigenère Cipher"
                 file: "VigenereCipher.qml"
@@ -109,6 +143,7 @@ ApplicationWindow {
             anchors.fill: parent
             model: model
             focus: true
+            
             delegate: Component {
                 Item {
                     width: parent.width
