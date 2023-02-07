@@ -78,6 +78,7 @@ ApplicationWindow {
             anchors.fill: parent
 
             ToolButton {
+                id: menuButton
                 Layout.alignment: Qt.AlignLeft
                 
                 Image {
@@ -104,6 +105,7 @@ ApplicationWindow {
             }
 
             RowLayout {
+                id: exitButton
                 Layout.alignment: Qt.AlignRight
 
                 ToolButton {
@@ -161,6 +163,10 @@ ApplicationWindow {
                             cipherList.currentIndex = index
                             loadScene.source = file;
                         }
+                    }
+
+                    Keys.onReturnPressed: {
+                        loadScene.source = file;
                     }
                 }
             }
