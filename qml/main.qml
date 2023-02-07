@@ -3,6 +3,9 @@ import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 2.15
 
+// TODO info section
+// TODO add tests to rust logic
+
 ApplicationWindow {
     id: root
     title: qsTr("Ciphers")

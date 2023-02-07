@@ -67,9 +67,11 @@ Rectangle {
             }
         }
 
-        Label {
+        TextEdit {
             anchors.horizontalCenter: parent.horizontalCenter
             text: "Output: " + vigenere.textOutput
+            readOnly: true
+            selectByMouse: true
         }
     }
 }
