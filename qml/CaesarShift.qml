@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
+import QtQuick.Layouts 2.15
 
 import kaue.cipher.caesar 1.0
 
@@ -68,10 +69,36 @@ Rectangle {
         }
 
         TextEdit {
+            id: caesarOutput
             anchors.horizontalCenter: parent.horizontalCenter
             text: "Output: " + caesar.textOutput
             readOnly: true
             selectByMouse: true
+        }
+
+        // TODO finish info expand and collapse
+        // TODO improve alignment
+        Rectangle {
+            id: caesarInfo
+            y: caesarOutput.y + root.height / 15
+            x: -caesarInfoText.contentWidth/2
+            
+            ColumnLayout {
+                anchors.fill: parent
+                spacing: 15
+                Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+
+                Text {
+                    Layout.alignment: Qt.AlignHCenter
+
+                    text: "Info"
+                }
+
+                Text {
+                    id: caesarInfoText
+                    text: caesar.info
+                }
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ ApplicationWindow {
     id: root
     title: qsTr("Ciphers")
     minimumWidth: 320
-    minimumHeight: 300
+    minimumHeight: 400
     visible: true
     color: "transparent"
     flags: Qt.FramelessWindowHint
