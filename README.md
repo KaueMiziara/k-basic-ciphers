@@ -1,6 +1,10 @@
 # kciphers (temporary name)
+This project was creatad as an excuse to learn how to use QML and integrate it with Rust.<br>
 
-## Ciphers
+## How to build from source
+> TODO
+
+## About the Ciphers
 Currently, the application can encode and decode text using the following ciphers: <br>
 
 ### Caesar Cipher/Shift
@@ -20,7 +24,4 @@ This cipher earned the description <em>"le chiffrage indéchiffrable"</em>
 ("<em>indecipherable cipher</em>") for taking over 300 years until someone managed to break it. <br>
 
 
-
-> TODO: A better looking GUI <br>
-> TODO: How to build with cmake <br>
 > TODO: A decent README <br>

@@ -4,7 +4,6 @@ import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 2.15
 
 // TODO info section
-// TODO add tests to rust logic
 
 ApplicationWindow {
     id: root
@@ -67,9 +66,8 @@ ApplicationWindow {
             }
 
             onDoubleClicked: {
-                if (root.visibility === Window.Maximized)
-                    root.visibility = Window.Windowed
-                else root.visibility = Window.Maximized
+                root.visibility = (root.visibility === Window.Maximized) ? 
+                    Window.Windowed : Window.Maximized
             }
         }
         
@@ -88,13 +86,7 @@ ApplicationWindow {
                     source: "img/menu.png"
                 }
 
-                onClicked: {
-                    if (sideBar.opened) {
-                        sideBar.close();
-                    } else {
-                        sideBar.open();
-                    }
-                }
+                onClicked: (sideBar.opened) ? sideBar.close() : sideBar.open()
             }
 
             Label {
