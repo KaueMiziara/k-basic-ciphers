@@ -2,7 +2,24 @@
 This project was creatad as an excuse to learn how to use QML and integrate it with Rust.<br>
 
 ## How to build from source
-> TODO
+Can be built using cmake, as long you have the dependencies installed.<br>
+
+Firstly, clone the source code (or download the .zip file):
+```bash
+git clone https://github.com/KaueMiziara/kciphers-with-cxxqt.git
+```
+Then, open the directory in the terminal use cmake to build the executable:<br>
+```bash
+cd path/to/directory
+
+# This will create a 'build' folder and generate the buildsystem
+cmake -S . -B build
+
+# This will build the project using the generated buildsystem
+cmake --build build
+```
+The app will be inside the 'build' folder. <br>
+
 
 ## About the Ciphers
 Currently, the application can encode and decode text using the following ciphers: <br>
@@ -22,6 +39,3 @@ this cipher was erroneously named after the french cryptographer Blaise de Vigen
 created a similar cipher, called "autokey cipher". <br>
 This cipher earned the description <em>"le chiffrage indéchiffrable"</em> 
 ("<em>indecipherable cipher</em>") for taking over 300 years until someone managed to break it. <br>
-
-
-> TODO: A decent README <br>
