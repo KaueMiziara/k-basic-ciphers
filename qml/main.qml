@@ -5,7 +5,7 @@ import QtQuick.Layouts 2.15
 
 ApplicationWindow {
     id: root
-    title: qsTr("Ciphers")
+    title: qsTr("Basic Ciphers")
     minimumWidth: 360
     minimumHeight: 320
     visible: true
@@ -91,7 +91,7 @@ ApplicationWindow {
                 id: toolBarLabel
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
 
-                text: "<b>Ciphers</b>"
+                text: "<b>Basic Ciphers</b>"
             }
 
             RowLayout {

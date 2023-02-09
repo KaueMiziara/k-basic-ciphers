@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(kciphers)
+project(basic-ciphers)
 set(APP_NAME ${PROJECT_NAME})
 
 set(CMAKE_AUTOMOC ON)
@@ -29,7 +29,7 @@ if(NOT Corrosion_FOUND)
     FetchContent_MakeAvailable(Corrosion)
 endif()
 
-set(CRATE kciphers-cxxqt)
+set(CRATE basic-ciphers-cxxqt)
 corrosion_import_crate(MANIFEST_PATH rust/Cargo.toml CRATES ${CRATE})
 
 set(CXXQT_EXPORT_DIR "${CMAKE_CURRENT_BINARY_DIR}/cxxqt")
