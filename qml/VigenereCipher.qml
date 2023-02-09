@@ -53,10 +53,10 @@ Rectangle {
             spacing: 15
 
             Button {
-                text: "Cipher"
+                text: "Enipher"
                 width: input.width / 2
 
-                onClicked: vigenere.textOutput = vigenere.cipherV()
+                onClicked: vigenere.textOutput = vigenere.encipherV()
             }
             
             Button {

@@ -3,13 +3,11 @@ import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 2.15
 
-// TODO info section
-
 ApplicationWindow {
     id: root
     title: qsTr("Ciphers")
-    minimumWidth: 320
-    minimumHeight: 400
+    minimumWidth: 360
+    minimumHeight: 320
     visible: true
     color: "transparent"
     flags: Qt.FramelessWindowHint

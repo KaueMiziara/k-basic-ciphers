@@ -54,10 +54,10 @@ Rectangle {
             spacing: 15
 
             Button {
-                text: "Cipher"
+                text: "Encipher"
                 width: input.width / 2
 
-                onClicked: caesar.textOutput = caesar.cipherC()
+                onClicked: caesar.textOutput = caesar.encipherC()
             }
             
             Button {
@@ -76,6 +76,4 @@ Rectangle {
             selectByMouse: true
         }
     }
-
-    // TODO redo info expand and collapse
 }

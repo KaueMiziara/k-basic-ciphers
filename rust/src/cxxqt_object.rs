@@ -16,9 +16,6 @@ mod cxxqt_object {
         text_output: QString,
         #[qproperty]
         shift: u32,
-
-        #[qproperty]
-        info: QString,
     }
 
     impl Default for CaesarObject {
@@ -27,18 +24,13 @@ mod cxxqt_object {
                 text_input: QString::from(""),
                 text_output: QString::from(""),
                 shift: 0,
-
-                info: QString::from("The Caesar Cipher is one of the most famous encryption \
-                technique.\nIt consists in, given a number that will be used as a \
-                \"key\" (also called \"shift\"), replacing each letter in a word for \
-                the letter 'key' positions down the alphabet.\n")
             }
         }
     }
 
     impl qobject::CaesarObject {
         #[qinvokable]
-        pub fn cipher_c(self: Pin<&mut Self>) -> QString {
+        pub fn encipher_c(self: Pin<&mut Self>) -> QString {
             let mut text: String = self.as_ref().text_input().into();
 
             let shift = (self.shift() % 26) as u8;
@@ -94,7 +86,7 @@ mod cxxqt_object {
 
     impl qobject::VigenereObject {
         #[qinvokable]
-        pub fn cipher_v(self: Pin<&mut Self>) -> QString {
+        pub fn encipher_v(self: Pin<&mut Self>) -> QString {
             let key = self.get_key();
             let text: String = self.text_input().into();
             let mut text = text.to_uppercase();
