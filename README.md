@@ -6,7 +6,7 @@ Can be built using cmake, as long you have the dependencies installed.<br>
 
 First, clone the source code (or download the .zip file):
 ```bash
-git clone https://github.com/KaueMiziara/kciphers-with-cxxqt.git
+git clone https://github.com/KaueMiziara/k-basic-ciphers.git
 ```
 Then, open the directory in the terminal and use cmake to build the executable:<br>
 ```bash
