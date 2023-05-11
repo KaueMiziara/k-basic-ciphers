@@ -1,4 +1,4 @@
-# Kaue's Basic Ciphers
+# K's Basic Ciphers
 This project was creatad as an excuse to learn how to use QML and integrate it with Rust.<br>
 
 ## How to build from source
